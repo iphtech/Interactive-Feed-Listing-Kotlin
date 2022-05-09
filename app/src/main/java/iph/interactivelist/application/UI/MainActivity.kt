@@ -19,6 +19,7 @@ import java.lang.reflect.Type
 class MainActivity : AppCompatActivity() {
 
     //Initialization
+    private var backPressed: Long = 0
     private  var isRefresh:Boolean=false
     private lateinit var binding: ActivityMainBinding
     private val postAdapter = PostAdapter()
@@ -41,7 +42,6 @@ class MainActivity : AppCompatActivity() {
     private fun bindings() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
 
     //Function to load the list data
@@ -52,17 +52,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerview.adapter = postAdapter
         postAdapter.setPostList(this,jsonData.subList(0,4))
-    }
-
-    // Function to re-load the list data
-    private fun getNewPostList() {
-        isRefresh=true
-        val gson = Gson()
-        val type: Type = object : TypeToken<List<Post?>?>() {}.type
-        val jsonData: List<Post> = gson.fromJson(jsonString, type)
-        binding.recyclerview.adapter = postAdapter
-        postAdapter.setPostList(this,jsonData.reversed())
-
     }
 
     //Function that refresh the list when SwipeRefreshLayout scrolled
@@ -82,11 +71,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Function to re-load the list data
+    private fun getNewPostList() {
+        isRefresh=true
+        val gson = Gson()
+        val type: Type = object : TypeToken<List<Post?>?>() {}.type
+        val jsonData: List<Post> = gson.fromJson(jsonString, type)
+        binding.recyclerview.adapter = postAdapter
+        postAdapter.setPostList(this,jsonData.reversed())
+
+    }
 
     //Override function onBackPress to close the app
     override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
+        if (backPressed + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+            finish()
+        } else {
+            Toast.makeText(this, "Hit back again to close app", Toast.LENGTH_SHORT).show()
+            backPressed = System.currentTimeMillis()
+        }
     }
 
 
