@@ -11,9 +11,10 @@ import com.google.gson.reflect.TypeToken
 import iph.interactivelist.application.Model.Post
 import iph.interactivelist.application.Model.PostAdapter
 import iph.interactivelist.application.R
-import iph.interactivelist.application.UtilsMethod.UtilsMethod
 import iph.interactivelist.application.databinding.ActivityMainBinding
+import java.io.IOException
 import java.lang.reflect.Type
+import java.nio.charset.Charset
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //getting the json from assets folder
-        jsonString=UtilsMethod.INSTANCE.getJsonFromAssets(this,"Post.json")
+        jsonString= getJSONFromAssets()!!
 
         bindings()
         getPostList();
@@ -93,6 +94,26 @@ class MainActivity : AppCompatActivity() {
             backPressed = System.currentTimeMillis()
         }
     }
+
+    // Function to get json data from assets folder and return the json string
+    private fun getJSONFromAssets(): String? {
+
+        var json: String? = null
+        val charset: Charset = Charsets.UTF_8
+        try {
+            val myUsersJSONFile = assets.open("Post.json")
+            val size = myUsersJSONFile.available()
+            val buffer = ByteArray(size)
+            myUsersJSONFile.read(buffer)
+            myUsersJSONFile.close()
+            json = String(buffer, charset)
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+            return null
+        }
+        return json
+    }
+
 
 
 }
