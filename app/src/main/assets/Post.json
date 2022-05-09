@@ -1,0 +1,38 @@
+[
+    {
+        "userName": "Julia jain",
+        "groupName": "Morning",
+        "postText": "the part of the day from the time when the sun rises or you wake up until the middle of the day",
+        "postDate": "10/02/2022",
+        "postPic": "post_image01"},
+    {
+        "userName": "Kia Kim",
+        "groupName": "Nature Villa",
+        "postText": "Club Nature villas is a part of Voyage Hospitality which was founded in 2015, Voyage Hospitality is a Leading Hospitality Consultancy firm in India.",
+        "postDate": "15/02/2022",
+        "postPic": "post_image02"},
+    {
+        "userName": "Nicky Nail",
+        "groupName": "River Rise",
+        "postText": "A river is a ribbon-like body of water that flows downhill from the force of gravity.",
+        "postDate": "20/03/2022",
+        "postPic": "post_image03"},
+    {
+        "userName": "Nikki Neo",
+        "groupName": "Mountain",
+        "postText": "A mountain is an elevated portion of the Earth's crust, generally with steep sides that show significant exposed bedrock",
+        "postDate": "25/03/2022",
+        "postPic": "post_image04"},
+    {
+        "userName": "Jimmy jean",
+        "groupName": "Umbrella",
+        "postText": "\"Umbrella\" is a song by Barbadian singer Rihanna from her third studio album Good Girl Gone Bad (2007).",
+        "postDate": "25/04/2022",
+        "postPic": "post_image05"},
+    {
+        "userName": "Lucy",
+        "groupName": "Cartoon",
+        "postText": "CARTOON is an international non-profit association based in Brussels. CARTOON's remit is to support the animation industry by organising several types of.",
+        "postDate": "25/03/2022",
+        "postPic": "post_image06"}
+]

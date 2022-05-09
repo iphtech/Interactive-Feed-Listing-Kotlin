@@ -1,0 +1,9 @@
+<resources>
+<string name="app_name">InteractiveFeedList</string>
+<string name="username">Username</string>
+<string name="group_name">Group name</string>
+<string name="post_date">Post date</string>
+<string name="post_data">Post data</string>
+
+
+</resources>
